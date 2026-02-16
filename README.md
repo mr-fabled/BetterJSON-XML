@@ -8,8 +8,11 @@ Intended for simple table serialization in Roblox/Polytoria, such as Datastore s
 ## Features
 
 Serializes Lua tables into XML format
+
 Parse XML back into Lua tables
+
 'null' helper methods
+
 Supports:
   - Strings
   - Numbers
