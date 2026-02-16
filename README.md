@@ -1,7 +1,7 @@
 # BetterJSON-XML
 Simple XML serializer/parser with null helper methods
 
-Intended for simple table serialization in Roblox environments, such as Datastore storage.
+Intended for simple table serialization in Roblox/Polytoria, such as Datastore storage.
 
 ---
 
