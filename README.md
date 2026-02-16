@@ -20,6 +20,7 @@ Supports:
 
 ## Usage
 
+```lua
 local BetterJSON = require(path.to.module)
 
 local data = {
@@ -36,3 +37,4 @@ print(xml)
 
 local parsed = j:parseXML(xml)
 print(parsed.Stats.Health)
+```
