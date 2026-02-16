@@ -21,7 +21,7 @@ Supports:
 ## Usage
 
 ```lua
-local BetterJSON = require(path.to.module)
+local BetterJSON = require(path)
 
 local data = {
     Unit = "Troop",
