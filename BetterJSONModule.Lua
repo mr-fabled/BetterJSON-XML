@@ -5,22 +5,21 @@ function BetterJSON.new()
     local self = setmetatable({}, BetterJSON)
     return self
 end
-function BetterJSON.isNull(xmlStr)
+function BetterJSON.isNull(jsonStr)
     --[[
     ^ = start of string
     %s* = removes pre whitespace
     (.-) = capture minimal content
     %s* = removes post whitespace
     $ = end of string ]]
-    local str = xmlStr:match("^%s*(.-)%s*$")
+    local str = jsonStr:match("^%s*(.-)%s*$")
     return str == "null"
 end
 function BetterJSON.null()
     return "null"
 end
 
---[[
-Serialize a Lua table into XML format.
+--[[ Serialize a Lua table into XML format.
 
 @param table table -- table to serialize
 @param divName string -- optional root/div name
@@ -64,7 +63,7 @@ function BetterJSON:parseXML(xmlStr)
         e = endIndex
         tag = captured tagName
         (%w+) = capture tagName ]]
-        local s, e, tag = xmlStr:find("<(%w+)>", pos)
+        local s, e, tag = xmlStr:find("<([%w:_-]+)>", pos)
         if not s then return nil end
         -- move cursor right
         pos = e + 1
@@ -73,8 +72,8 @@ function BetterJSON:parseXML(xmlStr)
         local t = {}
         while pos <= #xmlStr do
             --[[ variables to track relative position
-            (%w+) = capture one or more of alphanumeric characters ]]
-            local nextTagStart, nextTagEnd, childTag = xmlStr:find("<(%w+)>", pos)
+            ([%w:_-]+) = capture one or more of alphanumeric characters (colon, dash, underscore) ]]
+            local nextTagStart, nextTagEnd, childTag = xmlStr:find("<([%w:_-]+)>", pos)
             local closeTagStart, closeTagEnd = xmlStr:find("</"..tag..">", pos)
             if not nextTagStart or nextTagStart > closeTagStart then
                 -- in between tags
