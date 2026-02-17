@@ -5,14 +5,14 @@ function BetterJSON.new()
     local self = setmetatable({}, BetterJSON)
     return self
 end
-function BetterJSON.isNull(jsonStr)
+function BetterJSON.isNull(xmlStr)
     --[[
     ^ = start of string
     %s* = removes pre whitespace
     (.-) = capture minimal content
     %s* = removes post whitespace
     $ = end of string ]]
-    local str = jsonStr:match("^%s*(.-)%s*$")
+    local str = xmlStr:match("^%s*(.-)%s*$")
     return str == "null"
 end
 function BetterJSON.null()
